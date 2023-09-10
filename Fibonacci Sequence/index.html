@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Sequence</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            background-image: url(bg.jpg);
+            background-size: 100%;
+        }
+        #content {
+            display: inline-block;
+            text-align: left;
+            background-color: #ffffffae;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>Fibonacci Sequence</h1>
+        <p>Enter a Number:</p>
+        <input type="number" id="numTerms">
+        <button onclick="generateFibonacci()">Generate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function generateFibonacci() {
+            const numTerms = parseInt(document.getElementById("numTerms").value);
+            if (isNaN(numTerms) || numTerms <= 0) {
+                document.getElementById("result").innerHTML = "Please enter a valid number of terms.";
+                return;
+            }
+
+            let fibonacci = [0, 1];
+            for (let i = 2; i < numTerms; i++) {
+                const nextTerm = fibonacci[i - 1] + fibonacci[i - 2];
+                fibonacci.push(nextTerm);
+            }
+
+            document.getElementById("result").innerHTML = "Fibonacci Sequence: " + fibonacci.join(", ");
+        }
+    </script>
+</body>
+</html>
